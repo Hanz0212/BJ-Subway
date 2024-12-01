@@ -4,6 +4,7 @@
     stroke: #ddf1fc;
     stroke-width: 30px;
     fill: none;
+    opacity: 0;
   }
 }
 </style>
