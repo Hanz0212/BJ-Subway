@@ -9,7 +9,7 @@
 }
 </style>
 <template>
-  <svg  class="subway-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1200">
+  <svg  class="subway-bg" xmlns="http://www.w3.org/2000/svg" viewBox="100 50 1800 1400">
     <g id="subway-river">
       <polyline class="cls-1" points="110.63 1239.63 608.5 741.75 608.5 567.25 870.25 305.5 1109 305.5 1442.25 -27.75" />
       <polyline class="cls-1" points="0 422.5 450.5 422.5 611.5 583.5" />

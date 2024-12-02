@@ -14,7 +14,7 @@
 }
 </style>
 <template>
-  <svg class="subway-line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1200">
+  <svg class="subway-line" xmlns="http://www.w3.org/2000/svg" viewBox="100 50 1800 1400">
     <g id="subway-line">
       <polyline :class="{'is-show': item.show}" :stroke="item.color" :id="item.id" :points="item.points" v-for="item in data" :key="item.id"></polyline>
     </g>

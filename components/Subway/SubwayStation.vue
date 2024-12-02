@@ -16,7 +16,7 @@
 }
 </style>
 <template>
-  <svg class="subway-stations" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1200">
+  <svg class="subway-stations" xmlns="http://www.w3.org/2000/svg" viewBox="100 50 1800 1400">
     <g>
       <g v-for="(item, index) in data" :key="index">
         <circle class="subway-station" :class="{'is-show': item.show}" v-if="item.type == 1" r="4.5" :id="item.name" :cx="item.x" :cy="item.y"></circle>

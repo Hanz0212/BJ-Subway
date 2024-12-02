@@ -10,7 +10,7 @@
 }
 </style>
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1200">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="100 50 1800 1400">
     <g>
       <text class="subway-label" :class="{'is-show': item.show}" :id="item.name" :x="item.x" :y="item.y" :points="item.points" v-for="(item, index) in data" :key="index">{{item.title}}</text>
     </g>
