@@ -1,32 +1,3 @@
-<style scoped>
-.container {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.content-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
-}
-
-.legend-wrapper {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: #fff;
-  padding: 10px;
-}
-
-.subway-wrapper {
-  padding: 10px;
-}
-</style>
-
 <template>
   <section class="container">
     <div class="content-wrapper">
@@ -39,9 +10,11 @@
             <el-checkbox label="规划" border></el-checkbox>
           </el-checkbox-group> -->
         </sw-legend>
+        <el-slider class="el_slider" :value="sliderValue" :min="0" :max="100" :step="1" show-tooltip @input="updateSliderValue"></el-slider>
+        <div>当前半径: {{ sliderValue }}</div>
       </div>
       <div class="subway-wrapper">
-        <subway :lines="lines" :stations="stations" :texts="texts"></subway>
+        <subway :lines="lines" :stations="stations" :texts="texts" :sliderValue="sliderValue"></subway>
       </div>
     </div>
   </section>
@@ -72,7 +45,8 @@ export default {
       lines: [],
       stations: [],
       texts: [],
-      showStatus: []
+      showStatus: [],
+      sliderValue: 20 // 初始化 sliderValue  
     }
   },
 
@@ -83,6 +57,9 @@ export default {
   },
 
   methods: {
+    updateSliderValue(value) {
+      this.sliderValue = value; // 更新 sliderValue  
+    },
     handleHover(e) {
       console.log(e)
     },
@@ -134,3 +111,36 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+.legend-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.subway-wrapper {
+  padding: 10px;
+}
+
+.el-slider {
+  padding: 0 200px;
+}
+</style>

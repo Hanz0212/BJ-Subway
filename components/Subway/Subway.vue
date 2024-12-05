@@ -26,7 +26,7 @@
 <template>
   <div class="subway">
     <subway-line :data="lines"></subway-line>
-    <subway-station :data="stations"></subway-station>
+    <subway-station :data="stations" :sliderValue="sliderValue"></subway-station>
     <subway-label :data="texts"></subway-label>
     <subway-bg></subway-bg>
   </div>
@@ -46,6 +46,7 @@ export default {
     lines: Array,
     stations: Array,
     texts: Array,
+    sliderValue: Number
   },
 
   computed: {},
