@@ -1,6 +1,6 @@
 # 宁波地铁线路图
 
-![](static/ningbo-subway-logo.png)
+![](static/beijing-subway-logo.png)
 
 **在线浏览：**
 

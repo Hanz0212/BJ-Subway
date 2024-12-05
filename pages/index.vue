@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import data from '~/common/data/ningbo-subway.json'
-import lines from '~/common/data/ningbo-subway-lines.json'
+import data from '~/common/data/beijing-subway.json'
+import lines from '~/common/data/beijing-subway-lines.json'
 import Subway from '~/components/Subway/Subway'
 import SwLegend from '~/components/SwLegend/SwLegend'
 import SelectLines from '~/components/Select/SelectLines'
@@ -141,6 +141,7 @@ export default {
 }
 
 .el-slider {
-  padding: 0 200px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 </style>

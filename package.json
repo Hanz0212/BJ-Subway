@@ -1,7 +1,7 @@
 {
-  "name": "ningbo-subway",
+  "name": "beijing-subway",
   "version": "0.1.2",
-  "description": "Ningbo subway",
+  "description": "Beijing subway",
   "author": "xank <xank@qq.com>",
   "private": true,
   "scripts": {
@@ -15,6 +15,7 @@
   "dependencies": {
     "element-ui": "^2.4.0",
     "nuxt": "^1.0.0",
+    "papaparse": "^5.4.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2"
   },
