@@ -9,22 +9,22 @@
 
   .select-lines-item + .select-lines-item {
   }
-  &-item { 
-    display: flex;
-    width: 85px;
-    height: 40px;
-    text-align: center;
-    margin: 5px;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: 0.5s;
-    border: 1px solid rgba(0, 0, 0, 0);
-    align-items: center;
-    padding: 8px;
-    font-size: 13px;
-    border-radius: 4px;
-    font-weight: 600;
-    line-height: 1;
+    &-item { 
+      display: flex;
+      width: 85px;
+      height: 40px;
+      text-align: center;
+      margin: 5px;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: 0.5s;
+      border: 1px solid rgba(0, 0, 0, 0);
+      align-items: center;
+      padding: 8px;
+      font-size: 13px;
+      border-radius: 4px;
+      font-weight: 600;
+      line-height: 1;
 
     &:hover {
       opacity: 0.7;
@@ -42,18 +42,33 @@
     opacity: 1;
   }
 }
+
+.hide-station-names-button {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: hide-station-names-button;
+  padding-left: 5px;
+}
 </style>
 
 
 <template>
   <div class="select-lines">
-    <el-tooltip v-for="item in list" :key="item.id" effect="dark" :content="item.tooltip" placement="bottom">
+    <!-- <el-tooltip v-for="item in list" :key="item.id" effect="dark" :content="item.tooltip" placement="bottom"> -->
+    <div v-for="item in list" :key="item.id">
       <div @click="handleClick(item)" class="select-lines-item" :class="{ 'is-active': item.show }"
         :style="{ 'border-color': item.color }">
         <div class="select-lines-item__badge" :style="{ background: item.color }"></div> <!--彩色圆点-->
         {{ item.name }}
       </div>
-    </el-tooltip>
+    </div>
+    <!-- </el-tooltip> -->
+    
+    <div class="hide-station-names-button">
+      <el-button type="primary" @click="hideStationNames">隐藏站名</el-button>
+      <el-button type="primary" @click="resetGraph">重置</el-button>
+    </div>
   </div>
 </template>
 
@@ -69,7 +84,8 @@ export default {
 
   data() {
     return {
-      LINES_STATUS_DETAIL
+      LINES_STATUS_DETAIL: LINES_STATUS_DETAIL,
+      isHiddenStationNames: false
     }
   },
 
@@ -93,7 +109,20 @@ export default {
   methods: {
     handleClick(item) {
       item.show = !item.show
-      this.$emit('update')
+      this.$emit('update', this.isHiddenStationNames)
+    },
+
+    hideStationNames() {
+      this.isHiddenStationNames = !this.isHiddenStationNames
+      this.$emit('update', this.isHiddenStationNames)
+    },
+
+    resetGraph() {
+      this.isHiddenStationNames = false
+      this.list.forEach(item => {
+        item.show = true
+      })
+      this.$emit('update', false)
     }
   }
 }

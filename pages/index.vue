@@ -1,15 +1,48 @@
+<style scoped>
+.container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+.legend-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.subway-wrapper {
+  padding: 10px;
+}
+</style>
+
 <template>
   <section class="container">
-    <div>
-      <sw-legend>
-        <select-lines @update="handleUpdate" :data="lines" :lines="linesData"></select-lines>
-        <!-- <el-checkbox-group v-model="showStatus" size="small">
-          <el-checkbox label="已建成" border></el-checkbox>
-          <el-checkbox label="在建中" border></el-checkbox>
-          <el-checkbox label="规划" border></el-checkbox>
-        </el-checkbox-group> -->
-      </sw-legend>
-      <subway :lines="lines" :stations="stations" :texts="texts"></subway>
+    <div class="content-wrapper">
+      <div class="legend-wrapper">
+        <sw-legend>
+          <select-lines @update="handleUpdate" :data="lines" :lines="linesData"></select-lines>
+          <!-- <el-checkbox-group v-model="showStatus" size="small">
+            <el-checkbox label="已建成" border></el-checkbox>
+            <el-checkbox label="在建中" border></el-checkbox>
+            <el-checkbox label="规划" border></el-checkbox>
+          </el-checkbox-group> -->
+        </sw-legend>
+      </div>
+      <div class="subway-wrapper">
+        <subway :lines="lines" :stations="stations" :texts="texts"></subway>
+      </div>
     </div>
   </section>
 </template>
@@ -53,7 +86,7 @@ export default {
     handleHover(e) {
       console.log(e)
     },
-    handleUpdate() {
+    handleUpdate(isHiddenStationNames = false) {
       const showLines = new Set()
       const hideStations = new Set()
 
@@ -81,15 +114,17 @@ export default {
         }
       })
 
+
       this.texts.forEach(item => {
-        item.show = true
+        item.show = !isHiddenStationNames
         if (hideStations.has(item.title)) {
           item.show = false
         }
       })
 
+
       this.stations.forEach(item => {
-        console.log(item.name)
+        // console.log(item.name)
         item.show = true
         if (hideStations.has(item.name)) {
           item.show = false
