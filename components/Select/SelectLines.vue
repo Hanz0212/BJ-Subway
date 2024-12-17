@@ -67,7 +67,8 @@
     
     <div class="hide-station-names-button">
       <el-button type="primary" @click="hideStationNames">隐藏站名</el-button>
-      <el-button type="primary" @click="resetGraph">重置</el-button>
+      <el-button type="primary" @click="resetLines">重置线路</el-button>
+      <el-button type="primary" @click="resetFlows">重置客流</el-button>
     </div>
   </div>
 </template>
@@ -117,12 +118,16 @@ export default {
       this.$emit('update', this.isHiddenStationNames)
     },
 
-    resetGraph() {
+    resetLines() {
       this.isHiddenStationNames = false
       this.list.forEach(item => {
         item.show = true
       })
-      this.$emit('update', false)
+      this.$emit('update')
+    },
+
+    resetFlows() {
+      this.$emit('resetFlows')
     }
   }
 }
